@@ -2,26 +2,36 @@ package com.mygdx.game;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
-import com.badlogic.gdx.ScreenAdapter;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 
-public class Window extends ScreenAdapter {
+public class Window extends Game implements Screen{
 	private Game game;
 	private SpriteBatch batch;
-
+	private int HEIGHT = 500, WIDTH = 500;
 	GameObject player;
+	GameObject block;
 
+	GameObjectHandler gameObjectHandler;
+	MouseInput mouseInput;
+	
 	Window(LibgdxGame game) {
-		this.resize(500, 500);
-
+		this.resize(HEIGHT, WIDTH);
+		
 		this.game = game;
 		this.batch = game.batch;
-		player = new GameObject(0, 0, 50, 50);
+
+		player = new GameObject(ObjectID.PLAYER, 0, 0, 50, 50);
+		block = new GameObject(ObjectID.BLOCK, 100, 100, 50, 50);
+
+		gameObjectHandler = new GameObjectHandler();
+
+		gameObjectHandler.addGameObject(player);
+		gameObjectHandler.addGameObject(block);
+		mouseInput = new MouseInput(this);
 	}
 
 	private void draw() {
@@ -38,38 +48,24 @@ public class Window extends ScreenAdapter {
 		sr.setAutoShapeType(true);
 		sr.setColor(Color.BLUE);
 		sr.begin();
-
-		sr.rect(player.position.x, player.position.y, player.bounds.width, player.bounds.height);
+		gameObjectHandler.render(sr);
 		sr.end();
 
 	}
 
-	InputListener inputListener = new InputListener();
-
 	private void update() {
-
-		if (Gdx.input.isKeyPressed(Input.Keys.W)) {
-			player.position.y += 5;
-		} else if (Gdx.input.isKeyPressed(Input.Keys.S)) {
-			player.position.y -= 5;
-		}
-		if (Gdx.input.isKeyPressed(Input.Keys.A)) {
-			player.position.x -= 5;
-		} else if (Gdx.input.isKeyPressed(Input.Keys.D)) {
-			player.position.x += 5;
-		}
+		mouseInput.update();
+		gameObjectHandler.update();
 
 	}
 
 	private void tick() {
-		System.out.println("tick");
-		player.position.x += 5;
+
 	}
 
 	float elapsed = 0;
 	int frames = 0;
 
-	@Override
 	public void render(float delta) {
 		frames++;
 		elapsed += delta;
@@ -82,6 +78,40 @@ public class Window extends ScreenAdapter {
 			frames = 0;
 		}
 
+	}
+
+	public int getHEIGHT() {
+		return HEIGHT;
+	}
+
+	public void setHEIGHT(int hEIGHT) {
+		HEIGHT = hEIGHT;
+	}
+
+	public int getWIDTH() {
+		return WIDTH;
+	}
+
+	public void setWIDTH(int wIDTH) {
+		WIDTH = wIDTH;
+	}
+
+	@Override
+	public void show() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void hide() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void create() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
