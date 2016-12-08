@@ -4,16 +4,16 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="/my-gdx-game-core"/>
 	<classpathentry kind="src" path="assets"/>
-	<classpathentry kind="lib" path="/Users/ApolloFortyTwo/Desktop/libgdx-1.6.1/gdx-backend-android.jar"/>
-	<classpathentry kind="lib" path="/Users/ApolloFortyTwo/Desktop/libgdx-1.6.1/gdx-backend-gwt.jar"/>
-	<classpathentry kind="lib" path="/Users/ApolloFortyTwo/Desktop/libgdx-1.6.1/gdx-backend-headless.jar"/>
-	<classpathentry kind="lib" path="/Users/ApolloFortyTwo/Desktop/libgdx-1.6.1/gdx-backend-jglfw-natives.jar"/>
-	<classpathentry kind="lib" path="/Users/ApolloFortyTwo/Desktop/libgdx-1.6.1/gdx-backend-jglfw.jar"/>
-	<classpathentry kind="lib" path="/Users/ApolloFortyTwo/Desktop/libgdx-1.6.1/gdx-backend-lwjgl-natives.jar"/>
-	<classpathentry kind="lib" path="/Users/ApolloFortyTwo/Desktop/libgdx-1.6.1/gdx-backend-lwjgl.jar"/>
-	<classpathentry kind="lib" path="/Users/ApolloFortyTwo/Desktop/libgdx-1.6.1/gdx-backend-robovm.jar"/>
-	<classpathentry kind="lib" path="/Users/ApolloFortyTwo/Desktop/libgdx-1.6.1/gdx-natives.jar"/>
-	<classpathentry kind="lib" path="/Users/ApolloFortyTwo/Desktop/libgdx-1.6.1/gdx-setup.jar"/>
-	<classpathentry kind="lib" path="/Users/ApolloFortyTwo/Desktop/libgdx-1.6.1/gdx.jar"/>
+	<classpathentry kind="lib" path="Libraries/libgdx-1.6.1/gdx-backend-android.jar"/>
+	<classpathentry kind="lib" path="Libraries/libgdx-1.6.1/gdx-backend-gwt.jar"/>
+	<classpathentry kind="lib" path="Libraries/libgdx-1.6.1/gdx-backend-headless.jar"/>
+	<classpathentry kind="lib" path="Libraries/libgdx-1.6.1/gdx-backend-jglfw-natives.jar"/>
+	<classpathentry kind="lib" path="Libraries/libgdx-1.6.1/gdx-backend-jglfw.jar"/>
+	<classpathentry kind="lib" path="Libraries/libgdx-1.6.1/gdx-backend-lwjgl-natives.jar"/>
+	<classpathentry kind="lib" path="Libraries/libgdx-1.6.1/gdx-backend-lwjgl.jar"/>
+	<classpathentry kind="lib" path="Libraries/libgdx-1.6.1/gdx-backend-robovm.jar"/>
+	<classpathentry kind="lib" path="Libraries/libgdx-1.6.1/gdx-natives.jar"/>
+	<classpathentry kind="lib" path="Libraries/libgdx-1.6.1/gdx-setup.jar"/>
+	<classpathentry kind="lib" path="Libraries/libgdx-1.6.1/gdx.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
