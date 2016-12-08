@@ -5,10 +5,12 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.GL30;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
-public class Window extends Game implements Screen{
+public class Window extends Game implements Screen {
 	private Game game;
 	private SpriteBatch batch;
 	private int HEIGHT = 500, WIDTH = 500;
@@ -16,11 +18,13 @@ public class Window extends Game implements Screen{
 	GameObject block;
 
 	GameObjectHandler gameObjectHandler;
-	MouseInput mouseInput;
-	
+	OrthographicCamera camera;
+	InputListener inputListener;
+
 	Window(LibgdxGame game) {
-		this.resize(HEIGHT, WIDTH);
-		
+		camera = new OrthographicCamera();
+		camera.setToOrtho(false, 500, 500);
+
 		this.game = game;
 		this.batch = game.batch;
 
@@ -31,20 +35,25 @@ public class Window extends Game implements Screen{
 
 		gameObjectHandler.addGameObject(player);
 		gameObjectHandler.addGameObject(block);
-		mouseInput = new MouseInput(this);
+		inputListener = new InputListener(this);
+		Gdx.input.setInputProcessor(inputListener);
+		camera.position.set(camera.viewportWidth / 2, camera.viewportHeight / 2, 0);
 	}
 
 	private void draw() {
 		GL20 gl = Gdx.gl;
-		gl.glClearColor(1, 1, 1, 0);
+		gl.glClearColor(255, 255, 255, 0);
 		gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
+		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
 
 		batch.end();
 
 		ShapeRenderer sr = new ShapeRenderer();
+		sr.setProjectionMatrix(camera.combined);
 
+	
 		sr.setAutoShapeType(true);
 		sr.setColor(Color.BLUE);
 		sr.begin();
@@ -54,8 +63,10 @@ public class Window extends Game implements Screen{
 	}
 
 	private void update() {
-		mouseInput.update();
+
+		inputListener.update();
 		gameObjectHandler.update();
+		camera.update();
 
 	}
 
@@ -80,38 +91,30 @@ public class Window extends Game implements Screen{
 
 	}
 
-	public int getHEIGHT() {
-		return HEIGHT;
-	}
-
-	public void setHEIGHT(int hEIGHT) {
-		HEIGHT = hEIGHT;
-	}
-
-	public int getWIDTH() {
-		return WIDTH;
-	}
-
-	public void setWIDTH(int wIDTH) {
-		WIDTH = wIDTH;
-	}
-
 	@Override
 	public void show() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void hide() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void create() {
 		// TODO Auto-generated method stub
-		
+
+	}
+
+	@Override
+	public void resize(int width, int height) {
+
+		camera.viewportWidth = width;
+		camera.viewportHeight = height;
+
 	}
 
 }

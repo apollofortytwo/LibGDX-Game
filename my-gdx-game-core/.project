@@ -3,6 +3,9 @@
 	<name>my-gdx-game-core</name>
 	<comment></comment>
 	<projects>
+		<project>LibGDX_SANDBOX-core</project>
+		<project>LibGDX_SANDBOX-desktop</project>
+		<project>my-gdx-game-desktop</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
